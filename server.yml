@@ -1,0 +1,8 @@
+langservers:
+  python:
+    - pyls
+  R:
+    - R
+    - --slave
+    - -e
+    - languageserver::run()
