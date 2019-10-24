@@ -30,5 +30,5 @@ sudo ufw enable
 sudo ufw allow 22 8888 6006
 
 #GPU Monitor
-sudo pip install -y gpustat
-sudo pip install -y glances[gpu]
+pip install gpustat
+pip install glances[gpu]
