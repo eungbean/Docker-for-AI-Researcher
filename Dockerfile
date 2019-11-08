@@ -32,3 +32,5 @@ RUN ldconfig && \
 # Language Server for @krassowski/jupyterlab-lsp
 COPY server.yml /tmp
 CMD ["node","usr/local/share/jupyter/lab/staging/node_modules/jsonrpc-ws-proxy/dist/server.js","--port 3000","--languageServers","/tmp/server.yml"]
+
+WORKDIR /data
