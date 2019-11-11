@@ -6,6 +6,7 @@ sudo apt-get install -y zsh-completions
 
 sudo mkdir ~/temp
 cd ~/temp
+chsh -s `which zsh`
 
 git clone https://github.com/powerline/fonts.git
 cd fonts
@@ -27,7 +28,7 @@ sudo apt-get install -y git git-lfs
 #SSH
 sudo apt-get install -y ssh
 sudo ufw enable
-sudo ufw allow 22 8888 6006
+sudo ufw allow 22 8888 8080 6006
 
 #GPU Monitor
 pip install gpustat
