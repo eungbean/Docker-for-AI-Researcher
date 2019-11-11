@@ -1,0 +1,23 @@
+#########################################
+EUNGBEAN
+#########################################
+
+sudo docker run --gpus all -it \
+-p 8888:8888 -p 6006-6015:6006-6015 \
+-v /EOS:/data \
+--name lab \
+--ipc=host eungbean/deepo:lab \
+jupyter lab --no-browser \
+--ip=0.0.0.0 \
+--allow-root \
+--NotebookApp.token= --notebook-dir='/data'
+
+#########################################
+
+
+docker run --gpus all -it \
+-p 127.0.0.1:8080:8080 \
+-v "${HOME}/.local/share/code-server:/home/coder/.local/share/code-server" \
+-v /EOS:/data \
+--name code \
+codercom/code-server:v2
