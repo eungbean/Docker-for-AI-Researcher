@@ -1,15 +1,17 @@
-
-#####################(option1)PULL DOCKER IMAGE#####################
+##################(Recommend)PULL DOCKER IMAGE###################
 sudo docker pull eungbean/deepo:lab
-nvidia-docker run --rm eungbean/deepo:lab nvidia-smi
 
-#####################(Option2)BUILD DOCKER IMAGE#####################
+###################(Option2)BUILD DOCKER IMAGE###################
 sudo docker build --tag eungbean/deepo:lab .
 
-#####################TEST DOCKER IMAGE#####################
-sudo nvidia-docker run --rm eungbean/deepo:lab nvidia-smi
+########################TEST DOCKER IMAGE########################
+sudo docker run --rm --gpus all eungbean/deepo:lab nvidia-smi
 
 #####################DEPLOY DOCKER CONTAINER#####################
+############### SET YOUR OWN PASSWORD WITH -e TAG ###############
+############## BIND YOUR OWN DATAPATH WITH -v TAG ###############
+#################################################################
+
 sudo docker run --gpus all -it \
 -p 8888:8888 -p 6006-6015:6006-6015 \
 -v ~/docker:/data \
@@ -21,5 +23,5 @@ jupyter lab --no-browser \
 --NotebookApp.token= --notebook-dir='/data'
 
 #####################GO INSIDE THE CONTAINER#####################
-echo "alias lab='docker exec -it lab /bin/bash'" >> ${ZDOTDIR:-$HOME}/.zshrc
+echo "alias lab='docker exec -it lab /usr/bin/zsh'" >> ${ZDOTDIR:-$HOME}/.zshrc
 source ~/.zshrc
