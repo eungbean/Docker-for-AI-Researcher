@@ -1,0 +1,21 @@
+
+#####################(option1)PULL DOCKER IMAGE#####################
+sudo docker pull eungbean/deepo:code
+nvidia-docker run --rm eungbean/deepo:code nvidia-smi
+
+#####################(Option2)BUILD DOCKER IMAGE#####################
+sudo docker build --tag eungbean/deepo:code .
+
+#####################TEST DOCKER IMAGE#####################
+sudo nvidia-docker run --rm eungbean/deepo:code nvidia-smi
+
+#####################DEPLOY DOCKER CONTAINER#####################
+sudo docker run --gpus all -it \
+-p 8080:8080 -p 6006-6015:6006-6015 \
+-v ~/docker:/data \
+--name code \
+--ipc=host eungbean/deepo:code
+
+#####################GO INSIDE THE CONTAINER#####################
+echo "alias code='docker exec -it code /bin/bash'" >> ${ZDOTDIR:-$HOME}/.zshrc
+source ~/.zshrc

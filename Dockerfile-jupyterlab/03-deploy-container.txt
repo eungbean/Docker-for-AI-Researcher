@@ -1,8 +1,5 @@
 
 #####################(option1)PULL DOCKER IMAGE#####################
-sudo docker pull ufoym/deepo:all-jupyter
-nvidia-docker run --rm ufoym/deepo:all-jupyter nvidia-smi
-
 sudo docker pull eungbean/deepo:lab
 nvidia-docker run --rm eungbean/deepo:lab nvidia-smi
 
@@ -13,7 +10,7 @@ sudo docker build --tag eungbean/deepo:lab .
 sudo nvidia-docker run --rm eungbean/deepo:lab nvidia-smi
 
 #####################DEPLOY DOCKER CONTAINER#####################
-sudo docker run --runtime=nvidia -it \
+sudo docker run --gpus all -it \
 -p 8888:8888 -p 6006-6015:6006-6015 \
 -v ~/docker:/data \
 --name lab \
