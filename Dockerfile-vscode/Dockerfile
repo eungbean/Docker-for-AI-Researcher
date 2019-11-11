@@ -42,13 +42,7 @@ WORKDIR /
 RUN wget https://github.com/cdr/code-server/releases/download/2.1665-vsc1.39.2/code-server2.1665-vsc1.39.2-linux-x86_64.tar.gz
 RUN tar -xvf code-server2.1665-vsc1.39.2-linux-x86_64.tar.gz
 RUN mv code-server2.1665-vsc1.39.2-linux-x86_64 coder
-# RUN chmod 777 -R .
-RUN echo "export PASSWORD='0000'" >> ~/.zshrc
-ENV PASSWORD "0000"
-#RUN mv /coder /usr/local/bin/coder
-#COPY src/code-server.service /etc/systemd/system/
-#COPY src/override.conf /etc/systemd/system/code-server.service.d
 
-#RUN systemctl start code-server
+ENV PASSWORD "0000"
 
 WORKDIR /data
