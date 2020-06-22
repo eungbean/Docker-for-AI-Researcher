@@ -2,3 +2,5 @@
 imageio
 tensorflow-datasets
 urllib3
+easydict
+lmdb
