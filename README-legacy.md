@@ -41,7 +41,7 @@ Install following packages..
   * powerline font
 * GPU Monitoring tools   
   * gpustat  
-  * glances[gpu]
+  * glances
 * git  
 * ssh
 
