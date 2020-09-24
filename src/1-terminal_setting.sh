@@ -1,3 +1,7 @@
+#!/bin/bash
+PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
+source ${PROJ_DIR}/SETTINGS.sh
+
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt-get update
 
@@ -28,8 +32,13 @@ sudo apt-get install -y git git-lfs
 #SSH
 sudo apt-get install -y ssh
 sudo ufw enable
-sudo ufw allow 22 8888 8080 6006
+sudo ufw allow $JP_DEFAULT_PORT_HOST \
+    $JP_JPCODE_PORT_HOST \
+    $JP_TB_PORT_HOST \
+    $VS_DEFAULT_PORT_HOST \
+    $VS_VSCODE_PORT_HOST \
+    $VS_TB_PORT_HOST
 
 #GPU Monitor
 pip install gpustat
-pip install glances[gpu]
+pip install glances

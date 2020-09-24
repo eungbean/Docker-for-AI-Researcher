@@ -1,4 +1,4 @@
-backup/
-eungbean.sh
-eungbean.txt
+config.yaml
 gitignore_specific_line.md
+legacy.sh
+test.py

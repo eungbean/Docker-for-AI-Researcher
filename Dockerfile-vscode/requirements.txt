@@ -1,6 +1,0 @@
-2to3
-imageio
-tensorflow-datasets
-urllib3
-easydict
-lmdb

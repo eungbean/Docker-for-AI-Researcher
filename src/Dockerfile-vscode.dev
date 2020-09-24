@@ -1,0 +1,43 @@
+FROM ufoym/deepo
+EXPOSE 22 8888 8080 6006
+
+#CONFIGURE CUSTOM SETTING
+ENV PASSWORD "0000"
+
+## install VSCODE dependancies
+RUN apt-get update && apt-get install -y \
+	openssl \
+	net-tools \
+	git \
+	locales \
+	sudo \
+	dumb-init \
+	vim \
+	curl \
+	wget
+
+COPY requirements.txt /tmp
+
+WORKDIR /tmp
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y nodejs
+
+RUN apt-get install -y zsh neovim git git-lfs
+RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
+RUN chsh -s `which zsh`
+
+#CleanUp
+RUN ldconfig && \
+    apt-get clean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+
+#VSCODE
+WORKDIR /
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+COPY config.yaml ~/.config/code-server/config.yaml
+
+WORKDIR ~/

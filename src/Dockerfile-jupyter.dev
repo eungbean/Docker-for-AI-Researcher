@@ -1,17 +1,5 @@
-FROM ufoym/deepo
-EXPOSE 8080 6006-6015
-
-## install VSCODE dependancies
-RUN apt-get update && apt-get install -y \
-	openssl \
-	net-tools \
-	git \
-	locales \
-	sudo \
-	dumb-init \
-	vim \
-	curl \
-	wget
+FROM ufoym/deepo:all-jupyter
+EXPOSE 22 8888 8080 6006
 
 COPY requirements.txt /tmp
 
@@ -29,7 +17,11 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosu
 RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN curl -sLf https://spacevim.org/install.sh | bash
 RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
-RUN chsh -s `which zsh`
+
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager @jupyterlab/latex @jupyterlab/git @krassowski/jupyterlab_go_to_definition jupyterlab-drawio @lckr/jupyterlab_variableinspector @krassowski/jupyterlab-lsp
+RUN jupyter lab build
+
+RUN pip install python-language-server[all]
 
 #CleanUp
 RUN ldconfig && \
@@ -37,12 +29,8 @@ RUN ldconfig && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
-#VSCODE
-WORKDIR /
-RUN wget https://github.com/cdr/code-server/releases/download/2.1665-vsc1.39.2/code-server2.1665-vsc1.39.2-linux-x86_64.tar.gz
-RUN tar -xvf code-server2.1665-vsc1.39.2-linux-x86_64.tar.gz
-RUN mv code-server2.1665-vsc1.39.2-linux-x86_64 coder
+# Language Server for @krassowski/jupyterlab-lsp
+COPY server.yml /tmp
+CMD ["node","usr/local/share/jupyter/lab/staging/node_modules/jsonrpc-ws-proxy/dist/server.js","--port 3000","--languageServers","/tmp/server.yml"]
 
-ENV PASSWORD "0000"
-
-WORKDIR /data
+WORKDIR ~/
