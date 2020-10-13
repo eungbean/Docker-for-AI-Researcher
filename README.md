@@ -80,16 +80,16 @@ Grab some coffee for 10 minuites!
 
 ### Step 4. Let's use it!
 
-- VScode Container
-  **VSCODE**: `http://your.ip.addr.ess:18080`
-  **Tensorboard**: `http://your.ip.addr.ess:16006`
+- VScode Container  
+  **VSCODE**: `http://your.ip.addr.ess:18080`  
+  **Tensorboard**: `http://your.ip.addr.ess:16006`  
   **SSH**: `ssh -p 10022 root@your.ip.addr.ess`
 
 Without any configuration, initial password is `0000`.
 
-- Jupyter Container
-  **Jupyter**: `http://your.ip.addr.ess:28000`
-  **Tensorboard**: `http://your.ip.addr.ess:26006`
+- Jupyter Container  
+  **Jupyter**: `http://your.ip.addr.ess:28000`  
+  **Tensorboard**: `http://your.ip.addr.ess:26006`  
   **SSH**: `ssh -p 20022 root@your.ip.addr.ess`
 
 Without any configuration, initial password is `0000`.
