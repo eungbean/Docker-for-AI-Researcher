@@ -7,7 +7,7 @@
 
 **"Docker for A.I. Researcher"** is a series of Shell script that  
 _ allows you to quickly set up your deep learning research environment  
-_ supports almost (all commonly used deep learning frameworks)[https://github.com/eungbean/Docker-for-AI-Researcher#Available-tags] with GPU acceleration (CUDA and cuDNN included)  
+_ supports almost [all commonly used deep learning frameworks](https://github.com/eungbean/Docker-for-AI-Researcher#Available-tags) with GPU acceleration (CUDA and cuDNN included)  
 _ supports the next-generation web-based user interface IDE, [Jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/)  
 _ supports remote work with laptop OUTSIDE of the lab  
  \* includes fancy terminal setup with oh-my-zsh.
