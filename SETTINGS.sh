@@ -45,6 +45,5 @@ ALIAS_GPUSTAT='gpu2'
 if [$DOCKER_BUILD_WITH_PULL=true] ; then #TODO test
     VS_IMAGE_NAME='eungbean/deepo:code'
     JP_IMAGE_NAME='eungbean/deepo:jupyter'
-fi
-    
+fi  
 

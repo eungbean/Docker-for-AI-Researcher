@@ -5,6 +5,7 @@ source ${PROJ_DIR}/SETTINGS.sh
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt-get update
 
+#zsh
 sudo apt-get install -y zsh
 sudo apt-get install -y zsh-completions
 
@@ -12,33 +13,36 @@ sudo mkdir ~/temp
 cd ~/temp
 chsh -s `which zsh`
 
+# powerlinefont
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
 cd ..
 
-sudo curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
+#ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+#zsh-autocompletion
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+#zsh-autosuggestion
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+echo "plugins=(zsh-syntax-highlighting zsh-autosuggestions)" >> ${ZDOTDIR:-$HOME}/.zshrc
 
 sudo apt-get install -y neovim
-sudo curl -sLf https://spacevim.org/install.sh | bash
 sudo apt-get install -y git git-lfs
 
 #SSH
 sudo apt-get install -y ssh
 sudo ufw enable
-sudo ufw allow $JP_DEFAULT_PORT_HOST \
-    $JP_JPCODE_PORT_HOST \
-    $JP_TB_PORT_HOST \
-    $VS_DEFAULT_PORT_HOST \
-    $VS_VSCODE_PORT_HOST \
-    $VS_TB_PORT_HOST
+if [ $JP_DEFAULT_PORT_HOST ]; then sudo ufw allow $JP_DEFAULT_PORT_HOST;
+if [ $JP_JPCODE_PORT_HOST ]; then sudo ufw allow $JP_JPCODE_PORT_HOST;
+if [ $JP_TB_PORT_HOST ]; then sudo ufw allow $JP_TB_PORT_HOST;
+if [ $VS_DEFAULT_PORT_HOST ]; then sudo ufw allow $VS_DEFAULT_PORT_HOST;
+if [ $VS_VSCODE_PORT_HOST ]; then sudo ufw allow $VS_VSCODE_PORT_HOST;
+if [ $VS_TB_PORT_HOST ]; then sudo ufw allow $VS_TB_PORT_HOST;
 
-#GPU Monitor
+#GPU Monitoring tools
 pip install gpustat
 pip install glances

@@ -14,7 +14,10 @@ RUN apt-get update && apt-get install -y \
 	dumb-init \
 	vim \
 	curl \
-	wget
+	wget \
+	zsh \
+	git-lfs \
+
 
 COPY requirements.txt /tmp
 
@@ -25,11 +28,10 @@ RUN pip install -r requirements.txt
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
 
-RUN apt-get install -y zsh neovim git git-lfs
 RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
 RUN chsh -s `which zsh`
 
-#CleanUp
+#Cleanup
 RUN ldconfig && \
     apt-get clean && \
     apt-get autoremove && \
