@@ -29,7 +29,7 @@ sudo add-apt-repository \
 
 #INSTALL DOCKER ENGINE
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 #Update the apt package index:
 sudo apt-get update

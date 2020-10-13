@@ -1,4 +1,4 @@
-FROM ufoym/deepo:all-jupyter
+FROM ufoym/deepo
 EXPOSE 22 8888 8080 6006
 
 COPY requirements.txt /tmp

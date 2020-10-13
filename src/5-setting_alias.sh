@@ -11,11 +11,11 @@ alias ${ALIAS_NVIDIA_SMI}="watch -d -n 0.5 nvidia-smi"
 alias ${ALIAS_GPUSTAT}="gpustat -i"" >> ${ZDOTDIR:-$HOME}/.zshrc
 
 # after container launch
-if [${SETUP_DOCKER_VSCODE}=true] ; then
+if [ ${SETUP_DOCKER_VSCODE} = 'true'] ; then
     echo "alias code='docker exec -it ${VS_CONTAINER_NAME} /usr/bin/zsh'" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
-if [${SETUP_DOCKER_JUPYTERLAB}=true] ; then
+if [ ${SETUP_DOCKER_JUPYTERLAB} = 'true'] ; then
     echo "alias lab='docker exec -it ${JP_CONTAINER_NAME} /usr/bin/zsh'" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
