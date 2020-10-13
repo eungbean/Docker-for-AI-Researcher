@@ -1,15 +1,15 @@
 # Docker for A.I. Researcher
 
-![Docker Build Status](https://img.shields.io/docker/build/eungbean/deepo)  
-![Docker Automated build](https://img.shields.io/docker/automated/eungbean/deepo)  
-![Docker Pulls](https://img.shields.io/docker/pulls/eungbean/deepo)  
+![Docker Build Status](https://img.shields.io/docker/build/eungbean/deepo)
+![Docker Automated build](https://img.shields.io/docker/automated/eungbean/deepo)
+![Docker Pulls](https://img.shields.io/docker/pulls/eungbean/deepo)
 ![GitHub](https://img.shields.io/github/license/eungbean/Docker-for-AI-Researcher)
 
 **"Docker for A.I. Researcher"** is a series of Shell script that  
- _ allows you to quickly set up your deep learning research environment  
- _ supports almost (all commonly used deep learning frameworks)[https://github.com/eungbean/Docker-for-AI-Researcher#Available-tags] with GPU acceleration (CUDA and cuDNN included)  
- _ supports the next-generation web-based user interface IDE, [Jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/)  
- _ supports remote work with laptop OUTSIDE of the lab  
+_ allows you to quickly set up your deep learning research environment  
+_ supports almost (all commonly used deep learning frameworks)[https://github.com/eungbean/Docker-for-AI-Researcher#Available-tags] with GPU acceleration (CUDA and cuDNN included)  
+_ supports the next-generation web-based user interface IDE, [Jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/)  
+_ supports remote work with laptop OUTSIDE of the lab  
  \* includes fancy terminal setup with oh-my-zsh.
 
 # Demo
