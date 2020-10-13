@@ -42,8 +42,7 @@ JP_TB_PORT_HOST='26006'
 ALIAS_NVIDIA_SMI='gpu'
 ALIAS_GPUSTAT='gpu2'
 
-if [$DOCKER_BUILD_WITH_PULL=true] ; then #TODO test
+if [$DOCKER_BUILD_WITH_PULL] ; then #TODO test
     VS_IMAGE_NAME='eungbean/deepo:code'
     JP_IMAGE_NAME='eungbean/deepo:jupyter'
 fi  
-

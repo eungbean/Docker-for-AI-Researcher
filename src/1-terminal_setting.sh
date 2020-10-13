@@ -44,5 +44,8 @@ if [ $VS_VSCODE_PORT_HOST ]; then sudo ufw allow $VS_VSCODE_PORT_HOST;
 if [ $VS_TB_PORT_HOST ]; then sudo ufw allow $VS_TB_PORT_HOST;
 
 #GPU Monitoring tools
-pip install gpustat
-pip install glances
+pip install -y gpustat
+pip install -y glances
+
+#cleanup
+sudo apt autoremove
