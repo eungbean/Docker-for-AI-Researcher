@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS.sh
+source ${PROJ_DIR}/SETTINGS-Eungbean.sh
 
 #Driver autoinstall
 sudo add-apt-repository -y ppa:graphics-drivers/ppa

@@ -16,13 +16,13 @@ _ supports remote work with laptop OUTSIDE of the lab
 
 [Jupyterlab Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
 
+---
 # 1. Requirements
 
 - Nvidia GPU Driver Installation
 - 10 minuites
-
+---
 # 2. Quick Start
-
 ### step 1. clone the repository
 
 ```sh
@@ -31,46 +31,36 @@ git clone https://github.com/eungbean/Docker-for-AI-Researcher
 cd Docker-for-AI-Researcher
 ```
 
-Install following packages..
-
-- Open SSH
-- Terminal tools
-  - zsh
-  - oh-my-zsh
-  - zsh-syntax-highlighting
-  - zsh-autosuggestions
-  - neovim
-  - spacevim
-  - powerline font
-- GPU Monitoring tools
-  - gpustat
-  - glances
-- git
-- ssh
-
+---
 ### Setp 2. Set your arguments
 
 ```sh
 ./SETTING.sh
 ```
 
-* Set your SSH Password to `SETUP_DOCKER_VSCODE='0000'`
+* Set your SSH Password to `SETUP_DOCKER_VSCODE='root'`
 * To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
-* To install Jupyter Containier, You need to set `SETUP_DOCKER_JUPYTERLAB=true` in `SETTINGS.sh`.
 
 - You need to configure variables with `# Required` tag.
 - Boolean (ex: `true`) are not supported. Use strings instead. (ex: `\'true\'`)
 - Followings are some examples.
 
 ```sh
+##############################
+SET_1_TERMINAL_SETTING='false'
+SET_2_DOCKER_INSTALL='false'
+SET_3_VSCODE_CONTAINER_BUILD='true'
+SET_4_VSCODE_CONTAINER_RUN='true'
+SET_5_SETTING_ALIAS='false'
+##############################
+
 # DOCKER-VSCODE SETTING
 SETUP_DOCKER_VSCODE='true'   #REQUIRED
-VS_PASSWORD='0000'         #REQUIRED
+VS_PASSWORD='root'         #REQUIRED
 ...
-#DOCKER-JUPYTER SETTING
-SETUP_DOCKER_JUPYTERLAB='false'  #REQUIRED
-JP_PASSWORD='0000'         #REQUIRED
 ```
+
+---
 
 ### Step 3. BOOM!
 
@@ -81,11 +71,13 @@ JP_PASSWORD='0000'         #REQUIRED
 that's it. all set!  
 Grab some coffee for 10 minuites!
 
+---
+
 ### Step 4. Post Installation
 
 #### 1) Send ssh key to container
 ```sh
-ssh-copy-id -i ~/.ssh/id_rsa root@your.ip.add.ress
+ssh-copy-id -i ~/.ssh/id_rsa -p 10022 root@your.ip.add.ress
 ```
 
 
@@ -138,6 +130,7 @@ Without any configuration, initial password is `root`.
 Without any configuration, initial password is `root`.
 
 ---
+# 3. More Detailed..
 
 #### `1-terminal_setting.sh`
 
@@ -145,15 +138,23 @@ Without any configuration, initial password is `root`.
 sudo sh ./01-terminal-setting.sh
 ```
 
-> Install followings..
+Install following packages..
 
-- zsh
-- zsh-completions
-- zsh-syntax-highlighting
-- zsh-autosuggestions
-- neovim
-- gpustat
-- glances
+- Open SSH
+- Terminal tools
+  - zsh
+  - oh-my-zsh
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+  - neovim
+  - spacevim
+  - powerline font
+- GPU Monitoring tools
+  - gpustat
+  - glances
+- git
+
+---
 
 #### `2-docker_setup.sh`
 
@@ -176,6 +177,8 @@ To generate this message, Docker took the following steps:
 ...
 ```
 
+---
+
 #### `3-build_docker_jupyter.sh` / `3-build_docker_vscode.sh`
 
 I strongly recommend to use [ufoym/deepo](https://github.com/ufoym/deepo) image from scratch.  
@@ -196,9 +199,13 @@ Trust me, you'll happy with it.
 sudo docker pull ufoym/deepo:all-jupyter
 ```
 
+---
+
 #### `4-run_docker_jupyter.sh` / `4-run_docker_vscode.sh`
 
 deploy your container.
+
+---
 
 #### `5-setting_alias.sh`
 

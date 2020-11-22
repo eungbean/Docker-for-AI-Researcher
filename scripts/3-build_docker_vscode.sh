@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS.sh
+source ${PROJ_DIR}/SETTINGS-Eungbean.sh
 
 if [ ${DOCKER_BUILD_WITH_PULL} = 'true' ] ; then
     echo "Pull Docker Image for VSode"
@@ -11,9 +11,6 @@ else
 auth: password
 password: ${VS_PASSWORD}
 cert: false""" >> src/vscode/config.yaml
-
-    rm -rf src/sshd/sshd_users.conf
-    echo "root:${VS_PASSWORD}:e:1001:1001" >> src/sshd/sshd_users.conf
 
     # BUILD DOCKER IMAGE
     echo "Build Docker Image for VSode"

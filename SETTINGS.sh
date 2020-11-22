@@ -11,7 +11,7 @@ SET_5_SETTING_ALIAS='false'
 
 
 #GLOBAL SETTING
-GPUS="device=0"  # ['all',"'\"device=0\"'"]               #REQUIRED
+GPUS='1' # ['all','0', '1', ...] # How many GPUs you want to use. [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html]
 DOCKER_BUILD_WITH_PULL='false' #['true','false']
 SETTING_ALIAS='true'
 SSH_PASSWORD='root'
