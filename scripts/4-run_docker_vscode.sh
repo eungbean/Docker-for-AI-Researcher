@@ -9,13 +9,16 @@ echo "mapping VSCODE port   Host:${VS_CODE_PORT_HOST} --> Container:8080"
 echo "mapping TB port       Host:${VS_TB_PORT_HOST} --> Container:6006"
 
 # RUN THE CONTAINER
-docker run -d -P -it --ipc=host \
+sudo docker run -P -dit --ipc=host \
 	--gpus=${GPUS} \
 	-p ${VS_DEFAULT_PORT_HOST}:22 \
-	-p ${VS_CODE_PORT_HOST}:8000 \
+	-p ${VS_CODE_PORT_HOST}:8080 \
 	-p ${VS_TB_PORT_HOST}:6006 \
 	-v ${PROJ_DIR_HOST}:${PROJ_DIR_CONTAINER} \
-	-v ${DATASET_DIR_HOST}:${DATASET_DIR_CONTAINER} \
-	-v ${OUTPUT_DIR_HOST}:${OUTPUT_DIR_CONTAINER} \
 	--name ${VS_CONTAINER_NAME} \
 	${VS_IMAGE_NAME}
+
+	# If you want bind more volume, just add line below.
+	# -v ${DATASET_DIR_HOST}:${DATASET_DIR_CONTAINER} \
+	# -v ${OUTPUT_DIR_HOST}:${OUTPUT_DIR_CONTAINER} \
+	#..

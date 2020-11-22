@@ -33,6 +33,7 @@ cd Docker-for-AI-Researcher
 
 Install following packages..
 
+- Open SSH
 - Terminal tools
   - zsh
   - oh-my-zsh
@@ -53,19 +54,21 @@ Install following packages..
 ./SETTING.sh
 ```
 
-To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
-To install Jupyter Containier, You need to set `SETUP_DOCKER_JUPYTERLAB=true` in `SETTINGS.sh`.
+* Set your SSH Password to `SETUP_DOCKER_VSCODE='0000'`
+* To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
+* To install Jupyter Containier, You need to set `SETUP_DOCKER_JUPYTERLAB=true` in `SETTINGS.sh`.
 
 - You need to configure variables with `# Required` tag.
+- Boolean (ex: `true`) are not supported. Use strings instead. (ex: `\'true\'`)
 - Followings are some examples.
 
 ```sh
 # DOCKER-VSCODE SETTING
-SETUP_DOCKER_VSCODE=true   #REQUIRED
+SETUP_DOCKER_VSCODE='true'   #REQUIRED
 VS_PASSWORD='0000'         #REQUIRED
 ...
 #DOCKER-JUPYTER SETTING
-SETUP_DOCKER_JUPYTERLAB=false  #REQUIRED
+SETUP_DOCKER_JUPYTERLAB='false'  #REQUIRED
 JP_PASSWORD='0000'         #REQUIRED
 ```
 
@@ -78,21 +81,63 @@ JP_PASSWORD='0000'         #REQUIRED
 that's it. all set!  
 Grab some coffee for 10 minuites!
 
-### Step 4. Let's use it!
+### Step 4. Post Installation
+
+#### 1) Send ssh key to container
+```sh
+ssh-copy-id -i ~/.ssh/id_rsa root@your.ip.add.ress
+```
+
+
+#### 2) Get inside docker container
+* with ssh
+```sh
+ssh -p 10022 root@your.ip.add.ress
+```
+
+Initial ssh id/pw is `root/root`.
+
+* docker exec
+```sh
+docker exec -it ${CONTAINER_NAME} /usr/bin/zsh
+```
+
+#### 3) Change ssh password
+```
+(inside docker container)
+passwd
+```
+You have to set your own password.
+
+
+#### 4) Run `code-server` on background.
+```sh
+(inside docker container)
+nohup code-server --bind-addr 0.0.0.0:8080 . &!
+```
+
+Now if you access http://your.ip.add.ress:18080, you should see code-server!
+Check the config file at `SETTINGS.sh` for the password.
+
+
+
+### Step 5. Let's use it!
 
 - VScode Container  
   **VSCODE**: `http://your.ip.addr.ess:18080`  
-  **Tensorboard**: `http://your.ip.addr.ess:16006`  
+  **Tensorboard**: `http://your.ip.addr.ess:16006`
   **SSH**: `ssh -p 10022 root@your.ip.addr.ess`
 
-Without any configuration, initial password is `0000`.
+Without any configuration, initial password is `root`.
 
 - Jupyter Container  
   **Jupyter**: `http://your.ip.addr.ess:28000`  
   **Tensorboard**: `http://your.ip.addr.ess:26006`  
   **SSH**: `ssh -p 20022 root@your.ip.addr.ess`
 
-Without any configuration, initial password is `0000`.
+Without any configuration, initial password is `root`.
+
+---
 
 #### `1-terminal_setting.sh`
 
@@ -100,13 +145,23 @@ Without any configuration, initial password is `0000`.
 sudo sh ./01-terminal-setting.sh
 ```
 
-#### `2-docer_setup.sh`
+> Install followings..
+
+- zsh
+- zsh-completions
+- zsh-syntax-highlighting
+- zsh-autosuggestions
+- neovim
+- gpustat
+- glances
+
+#### `2-docker_setup.sh`
 
 ```sh
 sudo sh ./02-docker-setup.sh
 ```
 
-Install followings..
+> Install followings..
 
 - [Docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu)
 - [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)

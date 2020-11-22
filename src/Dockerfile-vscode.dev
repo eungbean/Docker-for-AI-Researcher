@@ -1,32 +1,41 @@
-FROM ufoym/deepo
-EXPOSE 22 8888 8080 6006
+FROM ufoym/deepo:all
 
-#CONFIGURE CUSTOM SETTING
-ENV PASSWORD "0000"
+#Tini
+ENV DEBIAN_FRONTEND=noninteractive \
+    TINI_VERSION=0.17.0 \
+    TINI_SHA512SUM=772a4bfaefcb4293a31c1fbfe83a0f61e028a79aff6ef56cc33c061025689dd8ae071db5e417f466bc0b415da0c3aa2e6613e2c610128617e71d2fec9ee6f831 \
+    BUILD_HOME=/tmp/home \
+    BUILD_UID=1000 \
+    BUILD_GID=1000
+
+ADD https://github.com/krallin/tini/releases/download/v$TINI_VERSION/tini-amd64 /usr/local/bin/tini
+RUN echo "$TINI_SHA512SUM  /usr/local/bin/tini" | sha512sum -c \
+    && chmod +x /usr/local/bin/tini
+
 
 ## install VSCODE dependancies
 RUN apt-get update && apt-get install -y \
-	openssl \
-	net-tools \
-	git \
-	locales \
 	sudo \
-	dumb-init \
-	vim \
-	curl \
-	wget \
+	git \
+	git-lfs \
 	zsh \
-	git-lfs
+	dumb-init \
+	openssh-server
 
-
-COPY requirements.txt /tmp
-
-WORKDIR /tmp
+	# openssl \
+	# net-tools \
+	# git \
+    #  \
+	# locales \
+	# curl \
+	# wget \
+	
+COPY src/requirements.txt /tmp
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y nodejs
+# RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+# RUN apt-get install -y nodejs
 
 RUN curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
 RUN chsh -s `which zsh`
@@ -38,8 +47,56 @@ RUN ldconfig && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
 #VSCODE
-WORKDIR /
+# WORKDIR /
 RUN curl -fsSL https://code-server.dev/install.sh | sh
-COPY config.yaml ~/.config/code-server/config.yaml
+RUN mkdir -p /root/.config/code-server
+COPY src/vscode/config.yaml /root/.config/code-server/config.yaml
+# RUN systemctl enable --now code-server@$USER
+# RUN nohup code-server --bind-addr 0.0.0.0:8080 . &
 
+# RUN curl -fOL https://github.com/cdr/code-server/releases/download/v3.7.2/code-server_3.7.2_amd64.deb
+# RUN sudo dpkg -i code-server_3.7.2_amd64.deb
+# COPY src/vscode/config.yaml ~/.config/code-server/config.yaml
+# RUN sudo systemctl enable --now code-server@root
+
+# VSCODE2
+# RUN sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen \
+#   && locale-gen
+# ENV LANG=en_US.UTF-8
+
+# RUN ARCH="$(dpkg --print-architecture)" && \
+#     curl -fsSL "https://github.com/boxboat/fixuid/releases/download/v0.4.1/fixuid-0.4.1-linux-$ARCH.tar.gz" | tar -C /usr/local/bin -xzf - && \
+#     chown root:root /usr/local/bin/fixuid && \
+#     chmod 4755 /usr/local/bin/fixuid && \
+#     mkdir -p /etc/fixuid && \
+#     printf "user: root\ngroup: root\n" > /etc/fixuid/config.yml
+
+# RUN curl -fOL https://github.com/cdr/code-server/releases/download/v3.7.2/code-server_3.7.2_amd64.deb /tmp
+# COPY src/vscode/code-server*.deb /tmp/
+# RUN wget https://raw.githubusercontent.com/cdr/code-server/a0db6723c1ef22b40d7ac0df5ac1bb9a92e4fe46/ci/release-image/entrypoint.sh /usr/bin/entrypoint.sh
+# RUN dpkg -i /tmp/code-server*$(dpkg --print-architecture).deb && rm /tmp/code-server*.deb
+
+# ENV USER=root
+#SSH
+
+
+########################################################
+# Thanks to https://github.com/touchifyapp/docker-ssh
+# # Replace ssh_config
+COPY src/sshd/* /usr/local/etc/sshd/
+COPY src/sshd/sshd_config /etc/ssh/sshd_config
+
+# set password
+RUN echo 'root:root' |chpasswd
+RUN service ssh start
+
+EXPOSE 22
+EXPOSE 8080
+EXPOSE 6006
 WORKDIR ~/
+# RUN systemctl enable code-server
+# RUN nohup bash -c "code-server --bind-addr 0.0.0.0:8080 &"
+
+ENTRYPOINT ["/usr/sbin/sshd","-D"]
+# ENTRYPOINT ["nohup","code-server","--bind-addr","0.0.0.0:8080",".","&"]
+# ENTRYPOINT ["/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]

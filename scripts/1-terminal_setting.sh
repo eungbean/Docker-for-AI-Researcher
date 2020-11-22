@@ -2,8 +2,10 @@
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
 source ${PROJ_DIR}/SETTINGS.sh
 
+#Driver autoinstall
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt-get update
+sudo ubuntu-drivers autoinstall
 
 #zsh
 sudo apt-get install -y zsh
@@ -35,13 +37,13 @@ sudo apt-get install -y git git-lfs
 
 #SSH
 sudo apt-get install -y ssh
-sudo ufw enable
-if [ $JP_DEFAULT_PORT_HOST ]; then sudo ufw allow $JP_DEFAULT_PORT_HOST;
-if [ $JP_JPCODE_PORT_HOST ]; then sudo ufw allow $JP_JPCODE_PORT_HOST;
-if [ $JP_TB_PORT_HOST ]; then sudo ufw allow $JP_TB_PORT_HOST;
-if [ $VS_DEFAULT_PORT_HOST ]; then sudo ufw allow $VS_DEFAULT_PORT_HOST;
-if [ $VS_VSCODE_PORT_HOST ]; then sudo ufw allow $VS_VSCODE_PORT_HOST;
-if [ $VS_TB_PORT_HOST ]; then sudo ufw allow $VS_TB_PORT_HOST;
+# if [ $JP_DEFAULT_PORT_HOST ]; then sudo ufw allow $JP_DEFAULT_PORT_HOST;
+# if [ $JP_JPCODE_PORT_HOST ]; then sudo ufw allow $JP_JPCODE_PORT_HOST;
+# if [ $JP_TB_PORT_HOST ]; then sudo ufw allow $JP_TB_PORT_HOST;
+# if [ $VS_DEFAULT_PORT_HOST ]; then sudo ufw allow $VS_DEFAULT_PORT_HOST;
+# if [ $VS_VSCODE_PORT_HOST ]; then sudo ufw allow $VS_VSCODE_PORT_HOST;
+# if [ $VS_TB_PORT_HOST ]; then sudo ufw allow $VS_TB_PORT_HOST;
+# sudo ufw enable
 
 #GPU Monitoring tools
 pip install -y gpustat

@@ -7,7 +7,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 # Install using the repository
 sudo apt-get update
 
-sudo apt-get install \
+sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -31,13 +31,7 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-#Update the apt package index:
-sudo apt-get update
-
-#Install the latest version of Docker CE
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
-# 현재 접속중인 사용자에게 권한주기
+# sudo
 sudo usermod -aG docker $USER 
 
 # INSTALL NVIDIA-DOCKER2 
