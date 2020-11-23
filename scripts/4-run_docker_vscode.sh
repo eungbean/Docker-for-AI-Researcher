@@ -1,7 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS-Eungbean.sh
-
+source ${PROJ_DIR}/SETTINGS.sh
 # PRINT PROGRESS
 echo "PROJECT FOLDER: $PROJ_DIR"
 echo "mapping SS port      Host:${VS_DEFAULT_PORT_HOST} --> Container:22"

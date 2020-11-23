@@ -1,7 +1,6 @@
 #!/bin/bash
 PROJ_DIR=$(pwd)
-source ${PROJ_DIR}/SETTINGS-Eungbean.sh
-
+source ${PROJ_DIR}/SETTINGS.sh
 if [ ${SET_1_TERMINAL_SETTING} = 'true' ] ; then
     echo "Setting Terminal.."
     ./scripts/1-terminal_setting.sh

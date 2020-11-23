@@ -1,7 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS-Eungbean.sh
-
+source ${PROJ_DIR}/SETTINGS.sh
 if [ ${DOCKER_BUILD_WITH_PULL} = 'true' ] ; then
     echo "Pull Docker Image for VSode"
     sudo docker pull ${VS_IMAGE_NAME}

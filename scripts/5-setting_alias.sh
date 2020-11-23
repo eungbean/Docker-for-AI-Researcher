@@ -1,7 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS-Eungbean.sh
-
+source ${PROJ_DIR}/SETTINGS.sh
 echo "alias vim=\"nvim\"
 alias vi=\"nvim\"
 alias vimdiff=\"nvim -d\"
