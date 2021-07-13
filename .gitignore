@@ -1,3 +1,4 @@
+_*
 config.yaml
 gitignore_specific_line.md
 
@@ -11,8 +12,6 @@ scripts/3-build_docker_jupyter.sh
 scripts/4-run_docker_jupyter.sh
 src/Jupyter/*
 src/Dockerfile-jupyter.dev
-
-
 
 # archives
 WORKING

@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
-source ${PROJ_DIR}/SETTINGS.sh
+source ${PROJ_DIR}/CONFIGS.sh
 
 echo "alias vim=\"nvim\"
 alias vi=\"nvim\"

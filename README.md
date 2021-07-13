@@ -1,3 +1,10 @@
+
+<!-- 
+1. Docker Login
+2. Docker installation path change
+https://dveamer.github.io/backend/DockerImageDirectory.html
+ -->
+
 # Docker for A.I. Researcher
 
 ![Docker Build Status](https://img.shields.io/docker/build/eungbean/deepo)
@@ -13,7 +20,6 @@ _ supports remote work with laptop OUTSIDE of the lab
  \* includes fancy terminal setup with oh-my-zsh.
 
 # Demo
-
 [Jupyterlab Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
 
 # 1. Requirements
@@ -31,9 +37,15 @@ git clone https://github.com/eungbean/Docker-for-AI-Researcher
 cd Docker-for-AI-Researcher
 ```
 
-Install following packages..
+### Step 2. Install NVIDIA Driver, Terminals.
 
-- Open SSH
+```sh
+sudo sh scripts/1-basic_install.sh
+```
+
+Install following packages.
+
+- NVidia Driver
 - Terminal tools
   - zsh
   - oh-my-zsh
@@ -46,58 +58,50 @@ Install following packages..
   - gpustat
   - glances
 - git
-- ssh
+- openssh
 
-### Setp 2. Set your arguments
-
+### Step 3. Install Docker
 ```sh
-./SETTING.sh
+sudo sh scripts/2-docker_install.sh
 ```
 
-* Set your SSH Password to `SETUP_DOCKER_VSCODE='0000'`
-* To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
-* To install Jupyter Containier, You need to set `SETUP_DOCKER_JUPYTERLAB=true` in `SETTINGS.sh`.
+exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-docker) [Installation Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide).
 
-- You need to configure variables with `# Required` tag.
-- Boolean (ex: `true`) are not supported. Use strings instead. (ex: `\'true\'`)
-- Followings are some examples.
 
+### Step 4. Configure Your Environment
 ```sh
-# DOCKER-VSCODE SETTING
-SETUP_DOCKER_VSCODE='true'   #REQUIRED
-VS_PASSWORD='0000'         #REQUIRED
-...
-#DOCKER-JUPYTER SETTING
-SETUP_DOCKER_JUPYTERLAB='false'  #REQUIRED
-JP_PASSWORD='0000'         #REQUIRED
+.env
 ```
 
-### Step 3. BOOM!
+### Step 5. Build and run your Docker Container
 
 ```sh
-./INSTALL.sh
+sudo sh scripts/3-docker_build.sh
+sudo sh scripts/4-run_docker.sh
 ```
 
-that's it. all set!  
-Grab some coffee for 10 minuites!
-
-### Step 4. Post Installation
+* Initial id/password is `root:root`.
+* please change it using `passwd' command inside the containder.
+* SSH to container will be automatically set up: `ssh -p 10022 root@localhost` and password `root`.
 
 #### 1) Send ssh key to container
 ```sh
-ssh-copy-id -i ~/.ssh/id_rsa root@your.ip.add.ress
+ssh-copy-id -p 10022 -i ~/.ssh/id_rsa root@your.ip.add.ress
 ```
 
-
 #### 2) Get inside docker container
-* with ssh
+
+> with ssh
+
 ```sh
 ssh -p 10022 root@your.ip.add.ress
 ```
 
-Initial ssh id/pw is `root/root`.
+* Initial ssh id/pw is `root/root`.
+* if you open 10022 port to the world, then you can access to your container via 10022 port from your laptop.
 
-* docker exec
+> docker exec
+
 ```sh
 docker exec -it ${CONTAINER_NAME} /usr/bin/zsh
 ```
@@ -110,33 +114,8 @@ passwd
 You have to set your own password.
 
 
-#### 4) Run `code-server` on background.
-```sh
-(inside docker container)
-nohup code-server --bind-addr 0.0.0.0:8080 . &!
-```
 
-Now if you access http://your.ip.add.ress:18080, you should see code-server!
-Check the config file at `SETTINGS.sh` for the password.
-
-
-
-### Step 5. Let's use it!
-
-- VScode Container  
-  **VSCODE**: `http://your.ip.addr.ess:18080`  
-  **Tensorboard**: `http://your.ip.addr.ess:16006`
-  **SSH**: `ssh -p 10022 root@your.ip.addr.ess`
-
-Without any configuration, initial password is `root`.
-
-- Jupyter Container  
-  **Jupyter**: `http://your.ip.addr.ess:28000`  
-  **Tensorboard**: `http://your.ip.addr.ess:26006`  
-  **SSH**: `ssh -p 20022 root@your.ip.addr.ess`
-
-Without any configuration, initial password is `root`.
-
+<!-- 
 ---
 
 #### `1-terminal_setting.sh`
@@ -202,4 +181,4 @@ deploy your container.
 
 #### `5-setting_alias.sh`
 
-Setup some aliases for convinience.
+Setup some aliases for convinience. -->
