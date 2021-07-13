@@ -43,7 +43,6 @@ https://dveamer.github.io/backend/DockerImageDirectory.html
 * 4-run_docker.sh     : Run Docker Container.
 * 5-setting_alias.sh  : Optional. Setting some happy alias.
 
----
 # 3. Quick Start
 ### step 1. clone the repository
 
@@ -82,15 +81,12 @@ sudo sh scripts/2-docker_install.sh
 ```
 
 exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-docker) [Installation Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide).
-=======
-* Set your SSH Password to `SETUP_DOCKER_VSCODE='root'`
-* To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
-
 
 ### Step 4. Configure Your Environment
 ```sh
 .env
 ```
+configure your folder, port, etc.
 
 ### Step 5. Build and run your Docker Container
 
@@ -99,11 +95,9 @@ sudo sh scripts/3-docker_build.sh
 sudo sh scripts/4-run_docker.sh
 ```
 
-* Initial id/password is `root:root`.
-* please change it using `passwd' command inside the containder.
-* SSH to container will be automatically set up: `ssh -p 10022 root@localhost` and password `root`.
-
-
+* Initial root user id/password is `root:root`.
+* please change it using `passwd` command inside the containder (don't worry. we'll do this together below).
+* SSH to container will be automatically set up: Try below!
 
 #### Step 6. Post Installation
 
@@ -111,6 +105,8 @@ sudo sh scripts/4-run_docker.sh
 ```sh
 ssh-copy-id -p 10022 -i ~/.ssh/id_rsa root@your.ip.add.ress
 ```
+
+* SSH to container will be automatically set up: Try `ssh -p 10022 root@localhost` and type password `root`.
 
 #### 2) Get inside docker container
 
