@@ -22,7 +22,7 @@ sudo docker run -P -dit --ipc=host \
 echo $RUN_COMMAND
 $RUN_COMMAND
 
-	# If you want bind more volume, just add line below.
-	# -v ${DATASET_DIR_HOST}:${DATASET_DIR_CONTAINER} \
-	# -v ${OUTPUT_DIR_HOST}:${OUTPUT_DIR_CONTAINER} \
-	#..
+# If you want bind more volume, just add line below.
+# -v ${DATASET_DIR_HOST}:${DATASET_DIR_CONTAINER} \
+# -v ${OUTPUT_DIR_HOST}:${OUTPUT_DIR_CONTAINER} \
+#..
