@@ -13,14 +13,13 @@ https://dveamer.github.io/backend/DockerImageDirectory.html
 ![GitHub](https://img.shields.io/github/license/eungbean/Docker-for-AI-Researcher)
 
 **"Docker for A.I. Researcher"** is a series of Shell script that  
-_ allows you to quickly set up your deep learning research environment  
-_ supports almost [all commonly used deep learning frameworks](https://github.com/eungbean/Docker-for-AI-Researcher#Available-tags) with GPU acceleration (CUDA and cuDNN included)  
-_ supports the next-generation web-based user interface IDE, [Jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/)  
-_ supports remote work with laptop OUTSIDE of the lab  
+_ allows you to quickly set up your deep learning research environment.
+_ supports the next-generation pytorch library, [pytorch-lightning](https://www.pytorchlightning.ai/).
+_ supports SSH! Remote work with laptop OUTSIDE of the box.
  \* includes fancy terminal setup with oh-my-zsh.
 
 # Demo
-[Jupyterlab Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
+[Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
 
 ---
 # 1. Requirements
@@ -37,7 +36,7 @@ git clone https://github.com/eungbean/Docker-for-AI-Researcher
 cd Docker-for-AI-Researcher
 ```
 
-### Step 2. Install NVIDIA Driver, Terminals.
+### Step 2. Install NVIDIA Driver and Terminal setup.
 
 ```sh
 sudo sh scripts/1-basic_install.sh
@@ -59,10 +58,6 @@ Install following packages.
   - glances
 - git
 - openssh
-=======
----
-### Setp 2. Set your arguments
->>>>>>> origin/master
 
 ### Step 3. Install Docker
 ```sh
@@ -73,7 +68,6 @@ exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-doc
 =======
 * Set your SSH Password to `SETUP_DOCKER_VSCODE='root'`
 * To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
->>>>>>> origin/master
 
 
 ### Step 4. Configure Your Environment
@@ -82,25 +76,6 @@ exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-doc
 ```
 
 ### Step 5. Build and run your Docker Container
-=======
-##############################
-SET_1_TERMINAL_SETTING='false'
-SET_2_DOCKER_INSTALL='false'
-SET_3_VSCODE_CONTAINER_BUILD='true'
-SET_4_VSCODE_CONTAINER_RUN='true'
-SET_5_SETTING_ALIAS='false'
-##############################
-
-# DOCKER-VSCODE SETTING
-SETUP_DOCKER_VSCODE='true'   #REQUIRED
-VS_PASSWORD='root'         #REQUIRED
-...
-```
-
----
-
-### Step 3. BOOM!
->>>>>>> origin/master
 
 ```sh
 sudo sh scripts/3-docker_build.sh
@@ -111,21 +86,13 @@ sudo sh scripts/4-run_docker.sh
 * please change it using `passwd' command inside the containder.
 * SSH to container will be automatically set up: `ssh -p 10022 root@localhost` and password `root`.
 
+
+
+#### Step 6. Post Installation
+
 #### 1) Send ssh key to container
 ```sh
 ssh-copy-id -p 10022 -i ~/.ssh/id_rsa root@your.ip.add.ress
-=======
-that's it. all set!  
-Grab some coffee for 10 minuites!
-
----
-
-### Step 4. Post Installation
-
-#### 1) Send ssh key to container
-```sh
-ssh-copy-id -i ~/.ssh/id_rsa -p 10022 root@your.ip.add.ress
->>>>>>> origin/master
 ```
 
 #### 2) Get inside docker container

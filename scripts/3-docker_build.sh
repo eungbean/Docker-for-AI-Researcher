@@ -1,4 +1,5 @@
 #!/bin/bash
+source .env
 # Documentation
 # https://github.com/PyTorchLightning/pytorch-lightning/tree/master/dockers
 
