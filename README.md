@@ -27,7 +27,24 @@ https://dveamer.github.io/backend/DockerImageDirectory.html
 - Nvidia GPU Driver Installation
 - 10 minuites
 ---
-# 2. Quick Start
+# 2. What's inside?
+```sh
+├── scripts
+│   ├── 1-basic_install.sh
+│   ├── 2-docker_install.sh
+│   ├── 3-docker_build.sh
+│   ├── 4-run_docker.sh
+│   └── 5-setting_alias.sh
+```
+
+* 1-basic_install.sh  : Install NVIDIA Driver + Terminal Utilities
+* 2-docker_install.sh : Install Docker + NvidiaDocker2
+* 3-docker_build.sh   : Setup Environment. Dockerfile + Docker Image build.
+* 4-run_docker.sh     : Run Docker Container.
+* 5-setting_alias.sh  : Optional. Setting some happy alias.
+
+---
+# 3. Quick Start
 ### step 1. clone the repository
 
 ```sh
