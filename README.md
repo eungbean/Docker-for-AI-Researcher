@@ -37,7 +37,6 @@ git clone https://github.com/eungbean/Docker-for-AI-Researcher
 cd Docker-for-AI-Researcher
 ```
 
-<<<<<<< HEAD
 ### Step 2. Install NVIDIA Driver, Terminals.
 
 ```sh
@@ -70,7 +69,6 @@ Install following packages.
 sudo sh scripts/2-docker_install.sh
 ```
 
-<<<<<<< HEAD
 exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-docker) [Installation Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide).
 =======
 * Set your SSH Password to `SETUP_DOCKER_VSCODE='root'`
@@ -80,7 +78,6 @@ exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-doc
 
 ### Step 4. Configure Your Environment
 ```sh
-<<<<<<< HEAD
 .env
 ```
 
@@ -110,7 +107,6 @@ sudo sh scripts/3-docker_build.sh
 sudo sh scripts/4-run_docker.sh
 ```
 
-<<<<<<< HEAD
 * Initial id/password is `root:root`.
 * please change it using `passwd' command inside the containder.
 * SSH to container will be automatically set up: `ssh -p 10022 root@localhost` and password `root`.
