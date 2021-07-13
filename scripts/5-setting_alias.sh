@@ -1,7 +1,11 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
+<<<<<<< HEAD
 source ${PROJ_DIR}/CONFIGS.sh
 
+=======
+source ${PROJ_DIR}/SETTINGS.sh
+>>>>>>> origin/master
 echo "alias vim=\"nvim\"
 alias vi=\"nvim\"
 alias vimdiff=\"nvim -d\"

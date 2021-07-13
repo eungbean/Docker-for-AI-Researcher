@@ -1,7 +1,11 @@
 #!/bin/bash
 PROJ_DIR=`dirname $(cd $(dirname $0); pwd)`
+<<<<<<< HEAD:scripts/1-basic_install.sh
 source ${PROJ_DIR}/CONFIGS.sh
 
+=======
+source ${PROJ_DIR}/SETTINGS.sh
+>>>>>>> origin/master:scripts/1-terminal_setting.sh
 #Driver autoinstall
 echo "Installing NVIDIA Drivers.."
 sudo add-apt-repository -y ppa:graphics-drivers/ppa

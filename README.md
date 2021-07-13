@@ -22,13 +22,13 @@ _ supports remote work with laptop OUTSIDE of the lab
 # Demo
 [Jupyterlab Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
 
+---
 # 1. Requirements
 
 - Nvidia GPU Driver Installation
 - 10 minuites
-
+---
 # 2. Quick Start
-
 ### step 1. clone the repository
 
 ```sh
@@ -37,6 +37,7 @@ git clone https://github.com/eungbean/Docker-for-AI-Researcher
 cd Docker-for-AI-Researcher
 ```
 
+<<<<<<< HEAD
 ### Step 2. Install NVIDIA Driver, Terminals.
 
 ```sh
@@ -59,27 +60,57 @@ Install following packages.
   - glances
 - git
 - openssh
+=======
+---
+### Setp 2. Set your arguments
+>>>>>>> origin/master
 
 ### Step 3. Install Docker
 ```sh
 sudo sh scripts/2-docker_install.sh
 ```
 
+<<<<<<< HEAD
 exact same procedure from [Nvidia Docker 2](https://github.com/NVIDIA/nvidia-docker) [Installation Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide).
+=======
+* Set your SSH Password to `SETUP_DOCKER_VSCODE='root'`
+* To install VScode Containier, You need to set `SETUP_DOCKER_VSCODE=true` in `SETTINGS.sh`.
+>>>>>>> origin/master
 
 
 ### Step 4. Configure Your Environment
 ```sh
+<<<<<<< HEAD
 .env
 ```
 
 ### Step 5. Build and run your Docker Container
+=======
+##############################
+SET_1_TERMINAL_SETTING='false'
+SET_2_DOCKER_INSTALL='false'
+SET_3_VSCODE_CONTAINER_BUILD='true'
+SET_4_VSCODE_CONTAINER_RUN='true'
+SET_5_SETTING_ALIAS='false'
+##############################
+
+# DOCKER-VSCODE SETTING
+SETUP_DOCKER_VSCODE='true'   #REQUIRED
+VS_PASSWORD='root'         #REQUIRED
+...
+```
+
+---
+
+### Step 3. BOOM!
+>>>>>>> origin/master
 
 ```sh
 sudo sh scripts/3-docker_build.sh
 sudo sh scripts/4-run_docker.sh
 ```
 
+<<<<<<< HEAD
 * Initial id/password is `root:root`.
 * please change it using `passwd' command inside the containder.
 * SSH to container will be automatically set up: `ssh -p 10022 root@localhost` and password `root`.
@@ -87,6 +118,18 @@ sudo sh scripts/4-run_docker.sh
 #### 1) Send ssh key to container
 ```sh
 ssh-copy-id -p 10022 -i ~/.ssh/id_rsa root@your.ip.add.ress
+=======
+that's it. all set!  
+Grab some coffee for 10 minuites!
+
+---
+
+### Step 4. Post Installation
+
+#### 1) Send ssh key to container
+```sh
+ssh-copy-id -i ~/.ssh/id_rsa -p 10022 root@your.ip.add.ress
+>>>>>>> origin/master
 ```
 
 #### 2) Get inside docker container
@@ -117,6 +160,7 @@ You have to set your own password.
 
 <!-- 
 ---
+# 3. More Detailed..
 
 #### `1-terminal_setting.sh`
 
@@ -124,15 +168,23 @@ You have to set your own password.
 sudo sh ./01-terminal-setting.sh
 ```
 
-> Install followings..
+Install following packages..
 
-- zsh
-- zsh-completions
-- zsh-syntax-highlighting
-- zsh-autosuggestions
-- neovim
-- gpustat
-- glances
+- Open SSH
+- Terminal tools
+  - zsh
+  - oh-my-zsh
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+  - neovim
+  - spacevim
+  - powerline font
+- GPU Monitoring tools
+  - gpustat
+  - glances
+- git
+
+---
 
 #### `2-docker_setup.sh`
 
@@ -155,6 +207,8 @@ To generate this message, Docker took the following steps:
 ...
 ```
 
+---
+
 #### `3-build_docker_jupyter.sh` / `3-build_docker_vscode.sh`
 
 I strongly recommend to use [ufoym/deepo](https://github.com/ufoym/deepo) image from scratch.  
@@ -175,9 +229,13 @@ Trust me, you'll happy with it.
 sudo docker pull ufoym/deepo:all-jupyter
 ```
 
+---
+
 #### `4-run_docker_jupyter.sh` / `4-run_docker_vscode.sh`
 
 deploy your container.
+
+---
 
 #### `5-setting_alias.sh`
 
