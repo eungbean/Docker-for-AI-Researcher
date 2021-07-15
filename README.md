@@ -7,6 +7,7 @@ https://dveamer.github.io/backend/DockerImageDirectory.html
 
 # Docker for A.I. Researcher
 
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/eungbean/deepo)
 ![Docker Pulls](https://img.shields.io/docker/pulls/eungbean/deepo)
 ![GitHub](https://img.shields.io/github/license/eungbean/Docker-for-AI-Researcher)
 
