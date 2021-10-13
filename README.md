@@ -12,10 +12,10 @@ https://dveamer.github.io/backend/DockerImageDirectory.html
 ![GitHub](https://img.shields.io/github/license/eungbean/Docker-for-AI-Researcher)
 
 **"Docker for A.I. Researcher"** is a series of Shell script that  
-* allows you to quickly set up your deep learning research environment.  
-* supports the next-generation pytorch library, [pytorch-lightning](https://www.pytorchlightning.ai/).  
-* supports SSH! Remote work with laptop OUTSIDE of the box.  
-* includes fancy terminal setup with oh-my-zsh.  
+* Allows you to quickly set up your deep learning research environment.  
+* Supports `SSH`! Remote work with laptop OUTSIDE of the box.  
+* Supports the next-generation pytorch library, [pytorch-lightning](https://www.pytorchlightning.ai/).  
+* Includes fancy terminal setup with oh-my-zsh.
  
 # Demo
 [Docker: Try it on Binder](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/master?urlpath=lab/tree/demo)
