@@ -15,8 +15,7 @@ sudo docker run -P -dit --ipc=host \
 	-p ${PORT_SSH} \
 	-p ${PORT_TBD} \
 	${ADDITONAL_CONFIGURATIONS} \
-	--name ${DOCKER_CONTAINER_NAME} \
-	-e SSH_ROOT_PASSWORD=${SSH_ROOT_PASSWORD} \
+	--name ${DOCKER_CONTAINER_NAME}_test \
 	${DOCKER_IMAGE_NAME}
 	"
 
