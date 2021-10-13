@@ -1,5 +1,7 @@
 #!/bin/bash
-source .env
+PROJ_DIR=$(pwd); set -o allexport; source .env; set +o allexport
+echo "3-Building Docker Container.."
+
 # Documentation
 # https://github.com/PyTorchLightning/pytorch-lightning/tree/master/dockers
 

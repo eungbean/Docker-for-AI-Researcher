@@ -1,4 +1,6 @@
 #!/bin/bash
+PROJ_DIR=$(pwd); set -o allexport; source .env; set +o allexport
+echo "5-Setting Alias.."
 
 echo "alias vim=\"nvim\"
 alias vi=\"nvim\"
