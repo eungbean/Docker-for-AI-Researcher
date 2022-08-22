@@ -1,2 +1,17 @@
-2to3
 #configure your required package here
+
+#math
+scipy
+numpy
+scikit-learn
+
+#plow
+matplotlib
+
+#image
+imageio
+pillow
+scikit-image
+
+#dataframe
+pandas

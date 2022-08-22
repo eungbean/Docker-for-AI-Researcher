@@ -1,4 +1,6 @@
-FROM pytorchlightning/pytorch_lightning:base-cuda-py3.8-torch1.9
+# FROM pytorchlightning/pytorch_lightning:base-cuda-py3.8-torch1.9
+# FROM pytorch/pytorch:latest
+FROM ufoym/deepo:latest
 
 ## install VSCODE dependancies
 RUN apt-get update && apt-get install -y \
@@ -7,15 +9,12 @@ RUN apt-get update && apt-get install -y \
 	git-lfs \
 	zsh \
 	dumb-init \
-	openssh-server
-
-	# openssl \
-	# net-tools \
-	# git \
-    #  \
-	# locales \
-	# curl \
-	# wget \
+	openssh-server \
+	curl \
+	wget \
+	openssl \
+	net-tools \
+	locales
 	
 COPY src/requirements.txt /tmp
 RUN pip install --upgrade pip
